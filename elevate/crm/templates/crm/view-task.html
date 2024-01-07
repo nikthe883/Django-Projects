@@ -24,6 +24,13 @@
 
     <br>
 
+    <a href="{% url 'update-task' task.id %}"> Update task </a>
+
+    &nbsp;
+
+    <a href="{% url 'delete-task' task.id %}"> Delete task </a>
+    <br>
+    <hr>
     {% endfor %}
 
     <hr>
