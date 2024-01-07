@@ -2,6 +2,9 @@ from django.shortcuts import render
 
 from django.http import HttpResponse
 
+from .models import Task
+
+
 def homepage(request):
 
     client_list = [
@@ -21,6 +24,17 @@ def homepage(request):
 
 
     return render(request, 'crm/index.html', context)
+
+
+def task(request):
+
+    query_data_all = Task.objects.all()
+    query_data_single = Task.objects.get(id=3)
+
+    context = {"all_tasks" : query_data_all,
+               "single_task": query_data_single}
+
+    return render(request,'crm/task.html', context)
 
 
 def register(request):
