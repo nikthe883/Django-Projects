@@ -1,0 +1,26 @@
+ {% extends 'crm/base.html' %}
+
+<html>
+
+    {% block content %}
+    <h3> Homepage</h3>
+
+    <p>Welcome to my website</p>
+
+        {% for client in main_client_list %}
+            <br>
+
+            {{client.id}}
+            <br>
+
+            {{client.name}}
+            <br>
+
+            {{client.occupation}}
+            <br>
+
+        {% endfor %}
+
+    {% endblock %}
+
+</html>
