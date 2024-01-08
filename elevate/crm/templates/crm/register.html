@@ -3,8 +3,20 @@
 <html>
 
     {% block content %}
+
     <h3> Register</h3>
     <p>Welcome to my register page</p>
+    <hr>
+    <form method="POST" autocomplete="off" enctype="multipart/form-data">
+        
+        {% csrf_token %}
+
+       {{ RegistrationForm.as_p }}
+
+        <input type="submit" value="Create account"/>
+
+    </form>
+
     {% endblock %}
     
 </html>

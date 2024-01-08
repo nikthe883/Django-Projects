@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 from .models import Task
-from .forms import TaskForm
+from .forms import TaskForm, CreateUserForm
 
 
 # Homepage
@@ -99,6 +99,18 @@ def delete_task(request,pk):
 
 def register(request):
 
-    return render(request,'crm/register.html')
+    form = CreateUserForm()
+
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+
+            return HttpResponse('User created')
+        
+    context = {'RegistrationForm': form}
+
+    return render(request,'crm/register.html', context)
 
 
