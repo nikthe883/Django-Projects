@@ -1,5 +1,13 @@
-
+{% load static %}
 <html>
+
+<head>
+
+    <link rel="stylesheet" type = "text/css" href="{% static 'css/styles.css' %}">
+
+
+</head>
+
 <h1> Website under dev</h1>
 <hr>
 
@@ -24,4 +32,7 @@
 
 
 {% endblock %}
+
+<script src="{% static 'js/app.js' %}"></script>
+
 </html>

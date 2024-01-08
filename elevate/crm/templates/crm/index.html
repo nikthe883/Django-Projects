@@ -1,12 +1,14 @@
  {% extends 'crm/base.html' %}
 
+ {% load static %}
+
 <html>
 
     {% block content %}
     <h3> Homepage</h3>
 
     <p>Welcome to my website</p>
-
+    <img src = "{% static 'images/bird.jpg' %}"
         {% for client in main_client_list %}
             <br>
 
@@ -18,6 +20,8 @@
 
             {{client.occupation}}
             <br>
+
+            
 
         {% endfor %}
 
