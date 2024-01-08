@@ -10,6 +10,8 @@ from django.contrib.auth.models import auth
 
 from django.contrib.auth import authenticate, login, logout
 
+from django.contrib.auth.decorators import login_required
+
 # Homepage
 
 def homepage(request):
@@ -154,6 +156,7 @@ def user_logout(request):
 
 # Dashboard
 
+@login_required(login_url='my-login')
 def dashboard(request):
     
     return render(request,'crm/dashboard.html')
