@@ -1,0 +1,32 @@
+
+{% extends 'journal/navbar.html' %} 
+
+<h3>My thoughts</h3>
+
+{% block content %}
+<br>
+
+{% for thought in AllThoughts %}
+<div class = 'container bg-white shadow-md p-5 form-layout'>
+
+    {{thought.title}}
+    <br>
+    {{thought.content}}
+    <br>
+    {{thought.date_posted}}
+
+    <br>
+    <hr>
+    
+    {{thought.user}}
+
+    <br>
+
+    <a href="{% url 'update-thought' thought.id %}"> Update Thought </a>
+
+</div>
+<br>
+{% endfor %}
+
+   
+{% endblock %}
