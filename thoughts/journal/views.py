@@ -11,6 +11,10 @@ from django.contrib import messages
 from . models import Thought, Profile
 from django.contrib.auth.models import User
 
+from django.core.mail import send_mail
+
+from django.conf import settings
+
 def homepage(request):
     return render(request, 'journal/index.html')
 
@@ -28,6 +32,8 @@ def register(request):
             current_user = form.save(commit=False)
 
             form.save()
+
+            send_mail("Welcome to the site","Congratulations on creating your account",settings.DEFAULT_FROM_EMAIL, [current_user.email])
 
             profile = Profile.objects.create(user=current_user)
 
