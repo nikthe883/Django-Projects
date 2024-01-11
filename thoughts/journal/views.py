@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from . forms import CreateUserForm, LoginForm, ThoughtForm
+from . forms import CreateUserForm, LoginForm, ThoughtForm, UpdateUserForm, UpdateProfileForm
 
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate, login, logout
@@ -8,11 +8,12 @@ from django.contrib.auth.decorators import login_required
 
 from django.contrib import messages
 
-from . models import Thought
-
+from . models import Thought, Profile
+from django.contrib.auth.models import User
 
 def homepage(request):
     return render(request, 'journal/index.html')
+
 
 def register(request):
 
@@ -24,7 +25,11 @@ def register(request):
 
         if form.is_valid():
 
+            current_user = form.save(commit=False)
+
             form.save()
+
+            profile = Profile.objects.create(user=current_user)
 
             messages.success(request,"User created!")
 
@@ -33,6 +38,7 @@ def register(request):
     context = {'RegistrationForm' : form}
 
     return render(request, 'journal/register.html', context)
+
 
 def my_login(request):
 
@@ -69,7 +75,11 @@ def user_logout(request):
 
 @login_required(login_url='my-login')
 def dashboard(request):
-    return render(request, 'journal/dashboard.html')
+
+    profile_pic = Profile.objects.get(user=request.user)
+
+    context = {'profile_pic' : profile_pic}
+    return render(request, 'journal/dashboard.html', context)
 
 
 @login_required(login_url='my-login')
@@ -147,3 +157,51 @@ def delete_thought(request, pk):
         return redirect('my-thought')
 
     return render(request, 'journal/delete-thought.html')
+
+
+
+@login_required(login_url='my-login')
+def profile_management(request):
+
+    form = UpdateUserForm(instance=request.user)
+
+    profile = Profile.objects.get(user=request.user)
+
+    form_two = UpdateProfileForm(instance=profile)
+
+    if request.method == "POST":
+        form = UpdateUserForm(request.POST, instance=request.user)
+
+        form_two = UpdateProfileForm(request.POST, request.FILES, instance=profile)
+
+        if form.is_valid():
+            form.save()
+
+            return redirect('dashboard')
+        
+        if form_two.is_valid():
+            form_two.save()
+
+            return redirect('dashboard')
+
+    context = {'UserUpdateForm' : form,
+               'ProfileUpdateForm' : form_two}
+
+    return render(request, 'journal/profile-management.html', context)
+
+
+
+@login_required(login_url='my-login')
+def delete_account(request):
+
+
+
+    if request.method == "POST":
+        deleteUser = User.objects.get(username=request.user)
+
+        deleteUser.delete()
+
+        return redirect('')
+
+
+    return render(request, 'journal/delete-account.html')
