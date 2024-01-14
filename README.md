@@ -1,3 +1,2 @@
-Some tutorial django projects 
+A project made with Django using CRUD operations and profile management like resetting the password of the user and uploading images to change your profile picture.
 
-Each project has its own folder
