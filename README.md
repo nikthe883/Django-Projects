@@ -10,12 +10,12 @@ Main points:
   - Read all your thought
   - Delete a thought
 
-3. Profile management:
-     - Resetting your password with Django built-in functionalities
-     - Updating your profile picture
-     - Updating your profile name and email address
+4. Profile management:
+   - Resetting your password with Django built-in functionalities
+   - Updating your profile picture
+   - Updating your profile name and email address
        
-4. The project uses Postgresql
+5. The project uses Postgresql
    
 Here are some images from the webpage:
 
