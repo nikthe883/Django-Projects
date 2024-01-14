@@ -16,6 +16,6 @@ Main points:
      - Updating your profile name and email address
        
 4. The project uses Postgresql
-
+   
 Here are some images from the webpage:
 
