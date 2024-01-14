@@ -19,3 +19,4 @@ Main points:
    
 Here are some images from the webpage:
 
+![my profile](https://github.com/nikthe883/Django-Thought-Project/assets/82037390/34615b93-ac65-418a-b268-ed7f53435fad)
