@@ -9,22 +9,24 @@
 {% for thought in AllThoughts %}
 <div class = 'container bg-white shadow-md p-5 form-layout'>
 
-    {{thought.title}}
+    <h3>{{thought.title}}</h3> 
     <br>
-    {{thought.content}}
+    <p>{{thought.content}}</p>
+    
     <br>
-    {{thought.date_posted}}
+    <p>{{thought.date_posted}}</p>
+    
 
     <br>
     <hr>
     
-    {{thought.user}}
 
     <br>
 
-    <a href="{% url 'update-thought' thought.id %}"> Update Thought </a>
+    <a class="btn btn-outline-primary btn-md w-100 btn-block p-3" href="{% url 'update-thought' thought.id %}"> Update </a>
     <br>
-    <a href="{% url 'delete-thought' thought.id %}"> Delete Thought </a>
+    <br>
+    <a class="btn btn-outline-danger btn-md w-100 btn-block p-3" href="{% url 'delete-thought' thought.id %}"> Delete </a>
 
 </div>
 <br>
