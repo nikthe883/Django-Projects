@@ -11,9 +11,9 @@ Main points:
   - Delete a thought
 
 4. Profile management:
-   - Resetting your password with Django built-in functionalities
-   - Updating your profile picture
-   - Updating your profile name and email address
+- Resetting your password with Django built-in functionalities
+- Updating your profile picture
+ - Updating your profile name and email address
        
 5. The project uses Postgresql
    
